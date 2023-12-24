@@ -3,6 +3,7 @@ package org.example;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -18,24 +19,41 @@ public class SeleniumTest {
     WebDriver driver;
 
     @Test
-    public void  loginTest(){
+    public void  testSearchEmail(){
 //        open browser
-        WebDriverManager.chromedriver();
-        driver = new ChromeDriver();
+        WebDriverManager.firefoxdriver();
+        driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        driver.get("https://the-internet.herokuapp.com/login");
+        driver.get("http://www.yopmail.com/");
         WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        //login
-        Wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
-        driver.findElement(By.id("username")).sendKeys("tomsmith");
-        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.xpath("//button[@class='radius']")).click();
+        WebElement searchBox = driver.findElement(By.id("login"));
+        searchBox.sendKeys("automationtest");
+        WebElement checkInboxButton = driver.findElement(By.cssSelector("button.md"));
+        checkInboxButton.click();
 
-        String txtActualBerhasilLogin = driver.findElement(By.xpath("//h4[@class='subheader']")).getText();
-        String txtExpectedBerhasilLogin = "Welcome to the Secure Area. When you are done click logout below.";
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        Assert.assertEquals(txtActualBerhasilLogin, txtExpectedBerhasilLogin);
+        driver.switchTo().frame("ifinbox");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.switchTo().defaultContent();
+        WebElement iframeElement = driver.findElement(By.id("ifmail"));
+        driver.switchTo().frame(iframeElement);
+
+        WebElement emailContent = driver.findElement(By.id("mail"));
+        String content = emailContent.getText();
+
+        System.out.println("Email Content:\n" + content);
 
         driver.quit();
     }
