@@ -1,9 +1,9 @@
-tugas sesi 8 Web Automation Fundamental
+tugas sesi 9 Web Automation Advance
 
 Tugas :
-1. Buka Yopmail.com  
-2. Search email “automationtest”  
-3. Extract content di email paling pertama menggunakan switch iframe
+1. Buka makemytrip.com
+2. Search any trip  
+3. Extract the value of top price
 
 ========================================
 
