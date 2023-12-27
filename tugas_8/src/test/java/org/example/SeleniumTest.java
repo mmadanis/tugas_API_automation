@@ -57,4 +57,36 @@ public class SeleniumTest {
 
         driver.quit();
     }
+
+    @Test
+    public void searchTrip() {
+        WebDriverManager.chromedriver().setup();
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        // open makemytrip.com
+        driver.get("https://www.makemytrip.com/");
+
+        WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div[2]/p/a"));
+        searchButton.click();
+
+        try {
+            Thread.sleep(50000);
+
+            WebElement closePopUp = driver.findElement(By.cssSelector("span.bgProperties.overlayCrossIcon.icon20"));
+
+            closePopUp.click();
+
+        } catch (Exception e) {
+            System.out.println("Pop-up tidak ditemukan atau tidak dapat ditutup: " + e.getMessage());
+        }
+
+        // get top price
+        WebElement topPriceElement = driver.findElement(By.xpath("//*[@id=\"listing-id\"]/div/div[2]/div/div[1]/div[1]/div[2]/div[2]/div/div/div"));
+        String topPrice = topPriceElement.getText();
+        System.out.println("Top Price: " + topPrice);
+
+        driver.quit();
+    }
 }
