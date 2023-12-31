@@ -25,7 +25,7 @@ WebUI.click(findTestObject('Object Repository/signup/a_Sign up'))
 
 WebUI.setText(findTestObject('Object Repository/signup/input_Username_sign-username'), GlobalVariable.username)
 
-WebUI.setEncryptedText(findTestObject('Object Repository/signup/input_Password_sign-password'), GlobalVariable.password)
+WebUI.setText(findTestObject('Object Repository/signup/input_Password_sign-password'), GlobalVariable.password)
 
 WebUI.click(findTestObject('Object Repository/signup/button_Sign up'))
 

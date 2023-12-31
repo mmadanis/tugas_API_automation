@@ -14,4 +14,14 @@
       <initValue>'katalon_1234567'</initValue>
       <name>password</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'anis_katalon'</initValue>
+      <name>username_purchase</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'anis_katalon'</initValue>
+      <name>password_purchase</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

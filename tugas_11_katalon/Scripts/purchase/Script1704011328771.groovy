@@ -21,14 +21,6 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('https://www.demoblaze.com/index.html')
 
-WebUI.click(findTestObject('Object Repository/purchase/Page_STORE/a_Log in'))
-
-WebUI.setText(findTestObject('Object Repository/purchase/Page_STORE/input_Username_loginusername'), GlobalVariable.password)
-
-WebUI.setEncryptedText(findTestObject('Object Repository/purchase/Page_STORE/input_Password_loginpassword'), GlobalVariable.password)
-
-WebUI.click(findTestObject('Object Repository/purchase/Page_STORE/button_Log in'))
-
 WebUI.click(findTestObject('Object Repository/purchase/Page_STORE/a_Samsung galaxy s6'))
 
 WebUI.click(findTestObject('Object Repository/purchase/Page_STORE/a_Add to cart'))
